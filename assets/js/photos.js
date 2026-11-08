@@ -1,14 +1,3 @@
-/*
- * My Frames of Earth — photo index
- * ------------------------------------------------------------------
- * To add a photograph:
- *   1. Drop the file in assets/photos/
- *   2. Copy one entry below and edit its fields
- *   3. Keep `id` unique and set width / height to the real pixel size
- *
- * Everything here is demo content. See README.md for the full guide.
- */
-
 window.PHOTOS = [
     {
     id: "Momoto-coroniazul",
@@ -75,7 +64,7 @@ window.PHOTOS = [
     plate: "003",
     featured: true,
     src: "assets/photos/chorcha.jpg",
-    width: 1800,
+    width: 1600,
     height: 1800,
     category: "birds",
     name: { en: "Streak-Backed Oriole", es: "Chorcha" },
@@ -97,7 +86,7 @@ window.PHOTOS = [
     credit: {
       author: "Sebastián Mesén Arias",
       license: "CC BY-NC 4.0",
-      url: "https://ebird.org/species/fibara1"
+      url: "https://ebird.org/species/stbori"
     }
   },
  {
@@ -105,7 +94,7 @@ window.PHOTOS = [
     plate: "004",
     featured: true,
     src: "assets/photos/comemaiz.jpg",
-    width: 1800,
+    width: 1400,
     height: 1800,
     category: "birds",
     name: { en: "Rufous-collared Sparrow", es: "Comemaíz" },
@@ -130,34 +119,64 @@ window.PHOTOS = [
       url: "https://ebird.org/species/rucspa1"
     }
   },
-  // },
-  // {
-  //   id: "arenal-volcano",
-  //   plate: "015",
-  //   src: "assets/photos/arenal-volcano.jpg",
-  //   width: 1800,
-  //   height: 994,
-  //   category: "landscapes",
-  //   name: { en: "Arenal Volcano", es: "Volcán Arenal" },
-  //   sci: "",
-  //   family: { sci: "—", en: "Landscape", es: "Paisaje" },
-  //   location: { en: "La Fortuna, Costa Rica", es: "La Fortuna, Costa Rica" },
-  //   date: "2025-01-17",
-  //   gear: { camera: "Sony α7R V", lens: "FE 24–70mm f/2.8 GM II" },
-  //   exif: { shutter: "1/250 s", aperture: "f/8", iso: "100", focal: "35 mm" },
-  //   alt: {
-  //     en: "The conical Arenal volcano rising above green forest under a blue sky with scattered clouds.",
-  //     es: "El volcán Arenal, de forma cónica, se alza sobre bosque verde bajo un cielo azul con nubes dispersas."
-  //   },
-  //   note: {
-  //     en: "Arenal is a young stratovolcano, about 1,670 m high. After decades of frequent eruptions it has been quiet since 2010.",
-  //     es: "El Arenal es un estratovolcán joven de unos 1.670 m de altura. Tras décadas de erupciones frecuentes, permanece tranquilo desde 2010."
-  //   },
-  //   tags: ["landscape", "paisaje", "volcano", "volcán", "Arenal", "La Fortuna", "mountain"],
-  //   credit: {
-  //     author: "Rhododendrites",
-  //     license: "CC BY-SA 4.0",
-  //     url: "https://commons.wikimedia.org/wiki/File:Arenal_volcano_(70785p)_(cropped).jpg"
-  //   }
-  // }
+ {
+    id: "Iguana",
+    plate: "005",
+    featured: true,
+    src: "assets/photos/garrobo.jpg",
+    width: 1200,
+    height: 1800,
+    category: "reptiles",
+    name: { en: "Green Iguana", es: "Iguana" },
+    sci: "Iguana Iguana",
+    family: { sci: "Iguanidae", en: "Iguanas", es: "Iguanas" },
+    location: { en: "Orotina, Alajuela, Costa Rica", es: "Orotina, Alajuela, Costa Rica" },
+    date: "2026-10-26",
+    gear: { camera: "FujiFilm X-T30-III", lens: "Tamrom 150mm-500mm (APS-C x1.5 225mm-750mm) ƒ/5-6.7" },
+    exif: { shutter: "1/500 s", aperture: "ƒ/6.7", iso: "400", focal: "750 mm" },
+    alt: {
+      en: "An iguana sunning itself in a tree; as cold-blooded creatures, they require the sun to regulate their body temperature.",
+      es: "Una Iguana tomando el sol en un árbol, al ser seres de sangre fria, requieren del sol para regular su temperatura."
+    },
+    note: {
+      en: "An iguana sunning itself in a tree; as cold-blooded creatures, they require the sun to regulate their body temperature.",
+      es: "Una Iguana tomando el sol en un árbol, al ser seres de sangre fria, requieren del sol para regular su temperatura."
+    },
+    tags: ["reptile", "Tropical moist forest", "Bosque húmedo tropical", "Iguana", "Iguana Iguana", "Orotina"],
+    credit: {
+      author: "Sebastián Mesén Arias",
+      license: "CC BY-NC 4.0",
+      url: "https://bioweb.bio/faunaweb/reptiliaweb/FichaEspecie/Iguana%20iguana"
+    }
+  },
+ {
+    id: "Cacique-Veranero",
+    plate: "006",
+    featured: true,
+    src: "assets/photos/bolsero-norteno.jpg",
+    width: 1500,
+    height: 1800,
+    category: "birds",
+    name: { en: "Baltimore Oriole", es: "Cacique Veranero" },
+    sci: "Icterus galbula",
+    family: { sci: "Icteridae", en: "Icterids", es: "Icteridos" },
+    location: { en: "Orotina, Alajuela, Costa Rica", es: "Orotina, Alajuela, Costa Rica" },
+    date: "2026-10-12",
+    gear: { camera: "FujiFilm X-T30-III", lens: "Tamrom 150mm-500mm (APS-C x1.5 225mm-750mm) ƒ/5-6.7" },
+    exif: { shutter: "1/180 s", aperture: "ƒ/6.7", iso: "500", focal: "750 mm" },
+    alt: {
+      en: "A male Icterus galbula perched on power lines near a small stream and fruit trees, during its migration through Costa Rica",
+      es: "Un ejemplar macho de Icterus galbula posado sobre líneas eléctricas cerca de un pequeño arroyo y arboles frutales, en temporada de migración por Costa Rica"
+    },
+    note: {
+      en: "A male Icterus galbula perched on power lines near a small stream and fruit trees, during its migration through Costa Rica",
+      es: "Un ejemplar macho de Icterus galbula posado sobre líneas eléctricas cerca de un pequeño arroyo y arboles frutales, en temporada de migración por Costa Rica"
+    },
+    tags: ["bird", "ave", "Tropical moist forest", "Bosque húmedo tropical", "Oriole", "Baltimore", "Orotina"],
+    credit: {
+      author: "Sebastián Mesén Arias",
+      license: "CC BY-NC 4.0",
+      url: "https://ebird.org/species/balori"
+    }
+  }
 ];

@@ -61,9 +61,9 @@ window.I18N = {
     creditsClose: "Close credits",
     aboutTitle: "About the collection",
     aboutBody:
-      "I photograph the animals, plants, architecture and landscapes I meet, mostly in Costa Rica. Each plate is filed with the relevant information.",
+      "I am Sebastián Mesén Arias, a Computer Engineer by trade (UCR - 2020) and a passionate photographer. Leveraging my background in Ecological Tourism (2015), I specialize in wildlife, landscape, and architectural photography from around the world. My Fujifilm X-T30 III is the perfect companion to complement and bring all these passions together.",
     aboutByline: "Sebastián Mesén",
-    aboutRole: "Wildlife photographer",
+    aboutRole: "Photographer",
     footerRights: "© 2026 Sebastián Mesén · Enthusiast Photograph.",
     footerBuilt: "Developed by Sebastián Mesén",
     categoryNames: {
@@ -144,9 +144,9 @@ window.I18N = {
     creditsClose: "Cerrar créditos",
     aboutTitle: "Sobre la colección",
     aboutBody:
-      "Fotografío los animales, las plantas, la arquitectura y los paisajes que encuentro, principalmente en Costa Rica. Cada imagen se archiva con la información pertinente.",
+      "Soy Sebastián Mesén Arias, Ingeniero Informático por la Universidad de Costa Rica (2020) y fotógrafo apasionado. Gracias a mi formación previa en Turismo Ecológico (2015), disfruto capturando la vida silvestre, así como la arquitectura y los paisajes de distintos rincones del mundo. Mi cámara Fuji X-T30 III es la compañera perfecta para conectar y plasmar todas estas pasiones.",
     aboutByline: "Sebastián Mesén",
-    aboutRole: "Fotógrafo de vida silvestre",
+    aboutRole: "Fotógrafo",
     footerRights: "© 2026 Sebastián Mesén · Fotografo entusiasta.",
     footerBuilt: "Desarrollado por Sebastián Mesén",
     categoryNames: {
