@@ -72,18 +72,20 @@ window.I18N = {
     categoryNames: {
       birds: "Birds",
       mammals: "Mammals",
-      herps: "Reptiles & amphibians",
+      herps: "Herpetofauna",
       insects: "Insects",
       plants: "Plants",
-      landscapes: "Landscapes"
+      landscapes: "Landscapes",
+      architecture: "Architecture"
     },
     categorySingular: {
       birds: "Bird",
       mammals: "Mammal",
-      herps: "Reptile or amphibian",
+      herps: "Herpetofauna",
       insects: "Insect",
       plants: "Plant",
-      landscapes: "Landscape"
+      landscapes: "Landscape",
+      architecture: "Architecture"
     }
   },
   es: {
@@ -158,18 +160,20 @@ window.I18N = {
     categoryNames: {
       birds: "Aves",
       mammals: "Mamíferos",
-      herps: "Reptiles y anfibios",
+      herps: "Herpetofauna",
       insects: "Insectos",
       plants: "Plantas",
-      landscapes: "Paisajes"
+      landscapes: "Paisajes",
+      architecture: "Arquitectura"
     },
     categorySingular: {
       birds: "Ave",
       mammals: "Mamífero",
-      herps: "Reptil o anfibio",
+      herps: "Herpetofauna",
       insects: "Insecto",
       plants: "Planta",
-      landscapes: "Paisaje"
+      landscapes: "Paisaje",
+      architecture: "Arquitectura"
     }
   }
 };

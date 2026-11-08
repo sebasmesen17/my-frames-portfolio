@@ -20,7 +20,7 @@
 
   const PHOTOS = normalizePhotos(window.PHOTOS);
   const I18N = window.I18N || { en: {}, es: {} };
-  const CATEGORIES = ["all", "birds", "mammals", "herps", "insects", "plants", "landscapes"];
+  const CATEGORIES = ["all", "birds", "mammals", "herps", "insects", "plants", "landscapes", "architecture"];
   const DEFAULTS = { q: "", category: "all", family: "all", place: "all", sort: "curated" };
 
   const state = { lang: "en", ...DEFAULTS };
@@ -170,31 +170,38 @@
 
   const escapeRegExp = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
+  const CATEGORY_SYNONYMS = {
+    herps: ["herpetofauna", "herpetology", "herpeto", "reptiles", "amphibians"],
+    architecture: ["architectural", "building", "buildings", "structure", "structures", "arquitectonico", "arquitectonica", "edificio", "edificios"]
+  };
+
   function searchIndex(photo) {
+    const category = photo.category;
     const categoryWords = [
-      photo.category,
-      I18N.en.categoryNames[photo.category],
-      I18N.en.categorySingular[photo.category],
-      I18N.es.categoryNames[photo.category],
-      I18N.es.categorySingular[photo.category]
-    ];
+      category,
+      I18N.en.categoryNames?.[category],
+      I18N.en.categorySingular?.[category],
+      I18N.es.categoryNames?.[category],
+      I18N.es.categorySingular?.[category],
+      ...(CATEGORY_SYNONYMS[category] || [])
+    ].filter(Boolean);
     return normalize([
-      photo.name.en,
-      photo.name.es,
+      photo.name?.en,
+      photo.name?.es,
       photo.sci,
-      photo.family.sci,
-      photo.family.en,
-      photo.family.es,
-      photo.location.en,
-      photo.location.es,
-      photo.note.en,
-      photo.note.es,
+      photo.family?.sci,
+      photo.family?.en,
+      photo.family?.es,
+      photo.location?.en,
+      photo.location?.es,
+      photo.note?.en,
+      photo.note?.es,
       photo.plate,
       photo.date,
       ...(photo.tags || []),
-      ...photo.images.flatMap((image) => [image.alt?.en, image.alt?.es]),
+      ...(photo.images || []).flatMap((image) => [image?.alt?.en, image?.alt?.es]),
       ...categoryWords
-    ].join(" "));
+    ].filter(Boolean).join(" "));
   }
 
   const indexCache = new Map(PHOTOS.map((photo) => [photo.id, searchIndex(photo)]));

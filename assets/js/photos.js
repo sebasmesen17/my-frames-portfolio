@@ -126,7 +126,7 @@ window.PHOTOS = [
     src: "assets/photos/garrobo.jpg",
     width: 1200,
     height: 1800,
-    category: "reptiles",
+    category: "herps",
     name: { en: "Green Iguana", es: "Iguana" },
     sci: "Iguana Iguana",
     family: { sci: "Iguanidae", en: "Iguanas", es: "Iguanas" },
