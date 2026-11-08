@@ -76,7 +76,7 @@ window.PHOTOS = [
     featured: true,
     src: "assets/photos/chorcha.jpg",
     width: 1800,
-    height: 994,
+    height: 1800,
     category: "birds",
     name: { en: "Streak-Backed Oriole", es: "Chorcha" },
     sci: "Icterus pustulatus",
@@ -100,35 +100,34 @@ window.PHOTOS = [
       url: "https://ebird.org/species/fibara1"
     }
   },
-
-      {
-    id: "Chorcha",
-    plate: "003",
+ {
+    id: "Comemaiz",
+    plate: "004",
     featured: true,
-    src: "assets/photos/chorcha.jpg",
+    src: "assets/photos/comemaiz.jpg",
     width: 1800,
-    height: 994,
+    height: 1800,
     category: "birds",
-    name: { en: "Streak-Backed Oriole", es: "Chorcha" },
-    sci: "Icterus pustulatus",
-    family: { sci: "Icteridae", en: "Icterids", es: "Icteridos" },
-    location: { en: "Orotina, Alajuela, Costa Rica", es: "Orotina, Alajuela, Costa Rica" },
+    name: { en: "Rufous-collared Sparrow", es: "Comemaíz" },
+    sci: "zonotrichia capensis",
+    family: { sci: "Passerellidae", en: "American sparrows", es: "Paserélidos" },
+    location: { en: "Poas, Alajuela, Costa Rica", es: "Poas, Alajuela, Costa Rica" },
     date: "2026-10-26",
     gear: { camera: "FujiFilm X-T30-III", lens: "Tamrom 150mm-500mm (APS-C x1.5 225mm-750mm) ƒ/5-6.7" },
-    exif: { shutter: "1/125 s", aperture: "ƒ/6.3", iso: "80", focal: "651 mm" },
+    exif: { shutter: "1/250 s", aperture: "ƒ/6.7", iso: "320", focal: "750 mm" },
     alt: {
-      en: "An Icterus pustulatus eating remains of papaya from the tree while sunbathing.",
-      es: "Un Icterus pustulatus comiendo restos de papaya del ábol mientras toma el sol."
+      en: "An individual of zonotrichia capensis in Poas at ground level jumping between forested rocks.",
+      es: "Un individuo de zonotrichia capensis en Poas a nivel de suelo saltando entre rocas boscosas"
     },
     note: {
-      en: "An Icterus pustulatus eating remains of papaya from the tree while sunbathing.",
-      es: "Un Icterus pustulatus comiendo restos de papaya del ábol mientras toma el sol."
+      en: "An individual of zonotrichia capensis in Poas at ground level jumping between forested rocks.",
+      es: "Un individuo de zonotrichia capensis en Poas a nivel de suelo saltando entre rocas boscosas"
     },
-    tags: ["bird", "ave", "Tropical moist forest", "Bosque húmedo tropical", "Oriole", "Chorcha", "Orotina"],
+    tags: ["bird", "ave", "Montane Rainforest", "Bosque Pluvial Montano", "Sparrow", "Comemaíz", "Poas"],
     credit: {
       author: "Sebastián Mesén Arias",
       license: "CC BY-NC 4.0",
-      url: "https://ebird.org/species/fibara1"
+      url: "https://ebird.org/species/rucspa1"
     }
   },
   // },
