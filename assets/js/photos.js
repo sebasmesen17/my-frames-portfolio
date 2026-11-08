@@ -178,5 +178,48 @@ window.PHOTOS = [
       license: "CC BY-NC 4.0",
       url: "https://ebird.org/species/balori"
     }
+  },
+  {
+    id: "Zopilote-Negro",
+    plate: "007",
+    featured: true,
+    images: [
+      {
+        src: "assets/photos/zopilote-negro1.jpg",
+        width: 4160,
+        height: 6240,
+        alt: {
+          en: "A Black Vulture perched and scanning its surroundings.",
+          es: "Un Zopilote Negro posado observando su entorno."
+        }
+      },
+      {
+        src: "assets/photos/zopilote-negro2.jpg",
+        width: 4160,
+        height: 6240,
+        alt: {
+          en: "A Black Vulture in a second view, showing posture and plumage.",
+          es: "Un Zopilote Negro en una segunda vista, mostrando postura y plumaje."
+        }
+      }
+    ],
+    category: "birds",
+    name: { en: "Black Vulture", es: "Zopilote Negro" },
+    sci: "Coragyps atratus",
+    family: { sci: "Cathartidae", en: "New World Vultures", es: "Buitres del Nuevo Mundo" },
+    location: { en: "Orotina, Alajuela, Costa Rica", es: "Orotina, Alajuela, Costa Rica" },
+    date: "2026-10-20",
+    gear: { camera: "FujiFilm X-T30-III", lens: "Tamrom 150mm-500mm (APS-C x1.5 225mm-750mm) ƒ/5-6.7" },
+    exif: { shutter: "1/30 s", aperture: "ƒ/6.7", iso: "500", focal: "750 mm" },
+    note: {
+          en: "A couple of Black Vulture perched and scanning its surroundings.",
+          es: "Una pareja de Zopilotes Negro posado observando su entorno."
+    },
+    tags: ["bird", "ave", "vulture", "zopilote", "Tropical moist forest", "Bosque húmedo tropical", "Orotina", "carousel example"],
+    credit: {
+      author: "Sebastián Mesén Arias",
+      license: "CC BY-NC 4.0",
+      url: "https://ebird.org/species/blkvul"
+    }
   }
 ];

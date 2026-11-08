@@ -174,9 +174,21 @@
       </header>
       <div class="viewer__body">
         <div class="viewer__media">
-          <figure class="viewer__figure">
-            <img id="viewerImg" alt="">
-          </figure>
+          <div class="viewer__stage">
+            <button class="icon-button viewer__imgnav viewer__imgnav--prev" type="button" id="viewerImagePrev" aria-label="Previous photograph" hidden>
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 5 8 12l7 7"></path>
+              </svg>
+            </button>
+            <figure class="viewer__figure">
+              <img id="viewerImg" alt="">
+            </figure>
+            <button class="icon-button viewer__imgnav viewer__imgnav--next" type="button" id="viewerImageNext" aria-label="Next photograph" hidden>
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m9 5 7 7-7 7"></path>
+              </svg>
+            </button>
+          </div>
           <div class="viewer__thumbs" id="viewerThumbs" role="group" aria-label="Photographs in this plate" hidden></div>
         </div>
         <aside class="viewer__info" id="viewerInfo" aria-live="polite"></aside>

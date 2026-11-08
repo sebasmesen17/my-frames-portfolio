@@ -55,6 +55,8 @@
     viewerInfo: $("#viewerInfo"),
     viewerPrev: $("#viewerPrev"),
     viewerNext: $("#viewerNext"),
+    viewerImagePrev: $("#viewerImagePrev"),
+    viewerImageNext: $("#viewerImageNext"),
     viewerClose: $("#viewerClose"),
     credits: $("#credits"),
     creditsList: $("#creditsList"),
@@ -270,6 +272,16 @@
                    alt="${esc(image.alt[state.lang])}" data-slide="${imageIndex}"
                    ${imageIndex > 0 ? 'aria-hidden="true"' : ""}
                    ${featured && imageIndex === 0 ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`).join("");
+    const controls = photo.images.length > 1
+      ? `
+              <button class="plate__control plate__control--prev" type="button" data-carousel-control="-1" aria-label="${esc(t("prevImage"))}">
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"></path></svg>
+              </button>
+              <button class="plate__control plate__control--next" type="button" data-carousel-control="1" aria-label="${esc(t("nextImage"))}">
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"></path></svg>
+              </button>
+              <span class="plate__counter" aria-hidden="true"><span data-counter>1</span> / ${photo.images.length}</span>`
+      : "";
 
     return `
       <article class="plate${featured ? " plate--featured" : ""}" style="--ar:${cover.width}/${cover.height}; --delay:${delay}ms">
@@ -278,7 +290,7 @@
           <div class="plate__mount">
             <div class="plate__imgwrap" data-carousel>
               ${slides}
-              ${photo.images.length > 1 ? `<span class="plate__counter" aria-hidden="true"><span data-counter>1</span> / ${photo.images.length}</span>` : ""}
+              ${controls}
             </div>
           </div>
           <div class="plate__body">
@@ -298,8 +310,27 @@
       </article>`;
   }
 
-  /* Auto-advance a plate while the pointer is over it. */
-  function stopCarousel(plate) {
+  function currentSlideIndex(wrap) {
+    const slides = $$(".plate__slide", wrap);
+    const index = slides.findIndex((slide) => slide.classList.contains("is-active"));
+    return index < 0 ? 0 : index;
+  }
+
+  function setPlateSlide(wrap, index) {
+    const slides = $$(".plate__slide", wrap);
+    if (!slides.length) return;
+    const next = (index + slides.length) % slides.length;
+    slides.forEach((slide, slideIndex) => {
+      const active = slideIndex === next;
+      slide.classList.toggle("is-active", active);
+      if (active) slide.removeAttribute("aria-hidden");
+      else slide.setAttribute("aria-hidden", "true");
+    });
+    const counter = $("[data-counter]", wrap);
+    if (counter) counter.textContent = String(next + 1);
+  }
+
+  function stopPlateCarouselTimers(plate) {
     const timers = carouselTimers.get(plate);
     if (!timers) return;
     window.clearTimeout(timers.start);
@@ -307,8 +338,13 @@
     carouselTimers.delete(plate);
   }
 
+  /* Auto-advance a plate while the pointer is over it (desktop hover). */
+  function stopCarousel(plate) {
+    stopPlateCarouselTimers(plate);
+  }
+
   function clearCarousels() {
-    [...carouselTimers.keys()].forEach(stopCarousel);
+    [...carouselTimers.keys()].forEach(stopPlateCarouselTimers);
   }
 
   function initCarousels() {
@@ -316,22 +352,12 @@
     $$("[data-carousel]").forEach((wrap) => {
       const plate = wrap.closest(".plate");
       const slides = $$(".plate__slide", wrap);
+      const link = wrap.closest("[data-photo]");
       if (!plate || slides.length < 2) return;
 
-      const start = () => {
+      const startHoverAdvance = () => {
         if (carouselTimers.has(plate) || reduceMotion.matches) return;
-        let current = Math.max(0, slides.findIndex((slide) => slide.classList.contains("is-active")));
-        const advance = () => {
-          current = (current + 1) % slides.length;
-          slides.forEach((slide, slideIndex) => {
-            const active = slideIndex === current;
-            slide.classList.toggle("is-active", active);
-            if (active) slide.removeAttribute("aria-hidden");
-            else slide.setAttribute("aria-hidden", "true");
-          });
-          const counter = $("[data-counter]", wrap);
-          if (counter) counter.textContent = String(current + 1);
-        };
+        const advance = () => setPlateSlide(wrap, currentSlideIndex(wrap) + 1);
         const startTimer = window.setTimeout(() => {
           advance();
           const timers = carouselTimers.get(plate);
@@ -342,9 +368,64 @@
 
       plate.addEventListener("pointerenter", (event) => {
         if (event.pointerType === "touch") return;
-        start();
+        startHoverAdvance();
       });
-      plate.addEventListener("pointerleave", () => stopCarousel(plate));
+      plate.addEventListener("pointerleave", () => stopPlateCarouselTimers(plate));
+
+      $$("[data-carousel-control]", wrap).forEach((button) => {
+        button.addEventListener("click", (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          stopPlateCarouselTimers(plate);
+          if (link) link.dataset.suppressOpen = "1";
+          setPlateSlide(wrap, currentSlideIndex(wrap) + Number(button.dataset.carouselControl));
+          window.setTimeout(() => {
+            if (link) delete link.dataset.suppressOpen;
+          }, 0);
+        });
+      });
+
+      /* Touch/mobile: swipe to change image, tap opens plate. */
+      let swipe = null;
+      wrap.addEventListener("pointerdown", (event) => {
+        if (event.pointerType === "mouse") return;
+        if (event.target.closest("[data-carousel-control]")) return;
+        stopPlateCarouselTimers(plate);
+        swipe = {
+          id: event.pointerId,
+          x: event.clientX,
+          y: event.clientY,
+          dx: 0,
+          dy: 0,
+          active: false
+        };
+      });
+
+      wrap.addEventListener("pointermove", (event) => {
+        if (!swipe || event.pointerId !== swipe.id) return;
+        swipe.dx = event.clientX - swipe.x;
+        swipe.dy = event.clientY - swipe.y;
+        if (!swipe.active && Math.abs(swipe.dx) > 10 && Math.abs(swipe.dx) > Math.abs(swipe.dy)) {
+          swipe.active = true;
+          try { wrap.setPointerCapture(event.pointerId); } catch (_) {}
+        }
+        if (swipe.active) event.preventDefault();
+      }, { passive: false });
+
+      const finishSwipe = (event) => {
+        if (!swipe || event.pointerId !== swipe.id) return;
+        if (swipe.active && Math.abs(swipe.dx) > 34) {
+          if (link) link.dataset.suppressOpen = "1";
+          setPlateSlide(wrap, currentSlideIndex(wrap) + (swipe.dx < 0 ? 1 : -1));
+          window.setTimeout(() => {
+            if (link) delete link.dataset.suppressOpen;
+          }, 350);
+        }
+        swipe = null;
+      };
+
+      wrap.addEventListener("pointerup", finishSwipe);
+      wrap.addEventListener("pointercancel", () => { swipe = null; });
     });
   }
 
@@ -516,6 +597,7 @@
 
   function renderViewer(photo) {
     if (viewerImageIndex >= photo.images.length) viewerImageIndex = 0;
+    const multiple = photo.images.length > 1;
     els.viewerPlate.textContent = `${t("plate")} ${photo.plate}`;
     els.viewerCat.textContent = categoryLabel(photo);
     setViewerImage(photo);
@@ -524,6 +606,14 @@
     els.viewerPrev.setAttribute("aria-label", t("prev"));
     els.viewerNext.setAttribute("aria-label", t("next"));
     els.viewerClose.setAttribute("aria-label", t("close"));
+    if (els.viewerImagePrev) {
+      els.viewerImagePrev.hidden = !multiple;
+      els.viewerImagePrev.setAttribute("aria-label", t("prevImage"));
+    }
+    if (els.viewerImageNext) {
+      els.viewerImageNext.hidden = !multiple;
+      els.viewerImageNext.setAttribute("aria-label", t("nextImage"));
+    }
   }
 
   function openViewer(id, imageIndex = 0) {
@@ -556,6 +646,17 @@
     const photo = visiblePhotos[activeIndex];
     renderViewer(photo);
     history.replaceState(null, "", `#${photo.id}`);
+  }
+
+  function stepViewerImage(direction) {
+    if (activeIndex < 0) return;
+    const photo = visiblePhotos[activeIndex];
+    if (!photo || photo.images.length < 2) return;
+    viewerImageIndex = (viewerImageIndex + direction + photo.images.length) % photo.images.length;
+    setViewerImage(photo);
+    $$(".viewer__thumb", els.viewerThumbs).forEach((button) => {
+      button.setAttribute("aria-pressed", String(Number(button.dataset.viewerImage) === viewerImageIndex));
+    });
   }
 
   function openCredits() {
@@ -634,8 +735,14 @@
 
     [els.featured, els.grid].forEach((container) => {
       container.addEventListener("click", (event) => {
+        if (event.target.closest("[data-carousel-control]")) return;
         const link = event.target.closest("[data-photo]");
         if (!link) return;
+        if (link.dataset.suppressOpen === "1") {
+          event.preventDefault();
+          delete link.dataset.suppressOpen;
+          return;
+        }
         event.preventDefault();
         const activeSlide = link.querySelector(".plate__slide.is-active");
         const imageIndex = activeSlide ? Number(activeSlide.dataset.slide) : 0;
@@ -646,6 +753,8 @@
     els.viewerClose.addEventListener("click", closeViewer);
     els.viewerPrev.addEventListener("click", () => stepViewer(-1));
     els.viewerNext.addEventListener("click", () => stepViewer(1));
+    els.viewerImagePrev?.addEventListener("click", () => stepViewerImage(-1));
+    els.viewerImageNext?.addEventListener("click", () => stepViewerImage(1));
 
     els.viewerThumbs.addEventListener("click", (event) => {
       const thumb = event.target.closest("[data-viewer-image]");
@@ -674,13 +783,12 @@
     });
 
     els.viewer.addEventListener("keydown", (event) => {
-      if (event.key === "ArrowLeft") {
-        event.preventDefault();
-        stepViewer(-1);
-      } else if (event.key === "ArrowRight") {
-        event.preventDefault();
-        stepViewer(1);
-      }
+      if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+      const photo = activeIndex >= 0 ? visiblePhotos[activeIndex] : null;
+      const multi = !!(photo && photo.images.length > 1);
+      event.preventDefault();
+      if (multi) stepViewerImage(event.key === "ArrowLeft" ? -1 : 1);
+      else stepViewer(event.key === "ArrowLeft" ? -1 : 1);
     });
 
     document.addEventListener("keydown", (event) => {
