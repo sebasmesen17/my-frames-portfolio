@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Frames of Earth — Wildlife Photography</title>
+  <meta name="description" content="A personal field guide to the wildlife of Costa Rica: photographs with their natural-history records and camera settings.">
+  <meta name="theme-color" content="#fcfcfa">
+  <meta property="og:title" content="My Frames of Earth — Wildlife Photography">
+  <meta property="og:description" content="A personal field guide to the wildlife of Costa Rica, with the camera settings behind every plate.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/photos/resplendent-quetzal.jpg">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/bricolage-variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/archivo-variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="assets/js/i18n.js" defer></script>
+  <script src="assets/js/photos.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#collection" data-i18n="skip">Skip to the collection</a>
+
+  <header class="masthead">
+    <div class="wrap masthead__inner">
+      <a class="brand" href="./">
+        <span class="brand__mark" aria-hidden="true">MFH</span>
+        <span class="brand__name" data-i18n="brand">My Frames of Earth</span>
+      </a>
+      <p class="brand__sub" data-i18n="brandSub">Wildlife photography · Costa Rica</p>
+      <nav class="masthead__nav" aria-label="Primary">
+        <a href="#collection" data-i18n="navCollection">Collection</a>
+        <a href="#about" data-i18n="navAbout">About</a>
+        <button class="link-button" type="button" data-open-credits data-i18n="navCredits">Photo credits</button>
+        <div class="lang" role="group" aria-label="Language" data-i18n-aria="langLabel">
+          <button type="button" data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" data-lang="es" aria-pressed="false">ES</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <h1 id="hero-title" data-i18n-html="heroTitle">The living world,<br><span class="hero__quiet">filed by hand.</span></h1>
+      <div class="hero__foot">
+        <p class="hero__intro" data-i18n="heroIntro">A personal field guide to the wildlife of Costa Rica. Every plate carries the natural-history record of its subject and the camera settings that brought it home.</p>
+        <p class="hero__ledger"><span id="ledgerTop">1 plate · 1 species</span><span id="ledgerBottom">1 family · one small country</span></p>
+      </div>
+    </section>
+
+    <section class="collection" id="collection" aria-labelledby="collection-title">
+      <h2 class="visually-hidden" id="collection-title" data-i18n="navCollection">Collection</h2>
+
+      <div class="index__sticky">
+        <div class="wrap">
+          <div class="search">
+            <label class="visually-hidden" for="search" data-i18n="searchLabel">Search the collection</label>
+            <svg class="search__icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+              <circle cx="10.5" cy="10.5" r="6.5"></circle>
+              <path d="m15.5 15.5 5 5"></path>
+            </svg>
+            <input id="search" type="search" autocomplete="off" spellcheck="false"
+                   placeholder="A bird, a family, a place…" data-i18n-placeholder="searchPlaceholder">
+            <kbd class="search__hint" aria-hidden="true" data-i18n="searchHint">Press /</kbd>
+          </div>
+          <div class="chips" id="chips" role="group" aria-label="Shape" data-i18n-aria="filterShape"></div>
+        </div>
+      </div>
+
+      <div class="index__meta">
+        <div class="wrap index__meta-inner">
+          <label class="select">
+            <span class="select__label" data-i18n="filterFamily">Family</span>
+            <select id="family"></select>
+          </label>
+          <label class="select">
+            <span class="select__label" data-i18n="filterPlace">Place</span>
+            <select id="place"></select>
+          </label>
+          <label class="select">
+            <span class="select__label" data-i18n="filterOrder">Order</span>
+            <select id="sort"></select>
+          </label>
+          <p class="result-count" id="resultCount" aria-live="polite">1 plate</p>
+          <button class="clear" id="clear" type="button" hidden data-i18n="clear">Clear filters</button>
+        </div>
+      </div>
+
+      <div class="wrap collection__body">
+        <div class="featured" id="featured"></div>
+        <div class="grid" id="grid"></div>
+
+        <div class="empty" id="empty" hidden>
+          <h2 data-i18n="noResultsTitle">Nothing filed under that yet.</h2>
+          <p data-i18n="noResultsBody">Try a broader word, or clear the filters.</p>
+          <button class="button" type="button" data-reset data-i18n="noResultsAction">Show every plate</button>
+        </div>
+
+        <noscript>
+          <p class="noscript">This collection needs JavaScript to search and open the plates. / Esta colección necesita JavaScript para buscar y abrir las láminas.</p>
+        </noscript>
+      </div>
+    </section>
+
+    <section class="about wrap" id="about" aria-labelledby="about-title">
+      <div class="about__grid">
+        <h2 id="about-title" data-i18n="aboutTitle">About the collection</h2>
+        <div class="about__body">
+          <p data-i18n="aboutBody">I photograph the animals, plants and landscapes I meet, mostly in the forests and coasts of Costa Rica. Each plate is filed like a specimen sheet: what the subject is, where it lives, and how the frame was made.</p>
+          <p class="about__signature">
+            <span class="about__name" data-i18n="aboutByline">Sebastián Mesén</span>
+            <span class="about__role" data-i18n="aboutRole">Wildlife photographer</span>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <p data-i18n="footerRights">© 2026 Sebastián Mesén · Demo photograph.</p>
+      <button class="link-button" type="button" data-open-credits data-i18n="navCredits">Photo credits</button>
+      <p class="footer__built" data-i18n="footerBuilt">Static site · GitHub Pages</p>
+    </div>
+  </footer>
+
+  <dialog class="viewer" id="viewer" aria-labelledby="viewerTitle">
+    <div class="viewer__shell">
+      <header class="viewer__bar">
+        <p class="viewer__label">
+          <span id="viewerPlate">Plate 001</span>
+          <span class="viewer__dot" aria-hidden="true">·</span>
+          <span id="viewerCat">Bird</span>
+        </p>
+        <div class="viewer__nav">
+          <button class="icon-button" type="button" id="viewerPrev" aria-label="Previous plate">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 5 8 12l7 7"></path>
+            </svg>
+          </button>
+          <button class="icon-button" type="button" id="viewerNext" aria-label="Next plate">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m9 5 7 7-7 7"></path>
+            </svg>
+          </button>
+          <button class="close-button" type="button" id="viewerClose" aria-label="Close">
+            <span data-i18n="close">Close</span>
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+              <path d="m5 5 14 14M19 5 5 19"></path>
+            </svg>
+          </button>
+        </div>
+      </header>
+      <div class="viewer__body">
+        <div class="viewer__media">
+          <figure class="viewer__figure">
+            <img id="viewerImg" alt="">
+          </figure>
+          <div class="viewer__thumbs" id="viewerThumbs" role="group" aria-label="Photographs in this plate" hidden></div>
+        </div>
+        <aside class="viewer__info" id="viewerInfo" aria-live="polite"></aside>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="credits" id="credits" aria-labelledby="credits-title">
+    <div class="credits__shell">
+      <header class="credits__bar">
+        <h2 id="credits-title" data-i18n="creditsTitle">Photo credits</h2>
+        <button class="close-button" type="button" id="creditsClose">
+          <span data-i18n="creditsClose">Close credits</span>
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <path d="m5 5 14 14M19 5 5 19"></path>
+          </svg>
+        </button>
+      </header>
+      <p class="credits__intro" data-i18n="creditsIntro">The photograph on this site is demo content from Wikimedia Commons, shown under the licence listed below.</p>
+      <ul class="credits__list" id="creditsList"></ul>
+    </div>
+  </dialog>
+</body>
+</html>
