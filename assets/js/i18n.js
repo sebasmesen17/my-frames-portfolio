@@ -59,12 +59,15 @@ window.I18N = {
     creditsIntro:
       "The photograph on this site were taken from Sebastián Mesén Arias's personal collection and are shown under the license indicated below.",
     creditsClose: "Close credits",
-    aboutTitle: "About the collection",
+    aboutTitle: "About me",
     aboutBody:
       "I am Sebastián Mesén Arias, a Computer Engineer by trade (UCR - 2020) and a passionate photographer. Leveraging my background in Ecological Tourism (2015), I specialize in wildlife, landscape, and architectural photography from around the world. My Fujifilm X-T30 III is the perfect companion to complement and bring all these passions together.",
     aboutByline: "Sebastián Mesén",
     aboutRole: "Photographer",
-    footerRights: "© 2026 Sebastián Mesén · Enthusiast Photograph.",
+    aboutSocialLabel: "Social links",
+    aboutLinkedIn: "LinkedIn profile",
+    aboutInstagram: "Instagram profile",
+    footerRights: "© 2026 · Enthusiast Photograph.",
     footerBuilt: "Developed by Sebastián Mesén",
     categoryNames: {
       birds: "Birds",
@@ -142,12 +145,15 @@ window.I18N = {
     creditsIntro:
       "Las fotografías de este sitio provienen de la colección personal de Sebastián Mesén Arias y se muestran bajo la licencia que se indica a continuación.r.",
     creditsClose: "Cerrar créditos",
-    aboutTitle: "Sobre la colección",
+    aboutTitle: "Sobre mí",
     aboutBody:
       "Soy Sebastián Mesén Arias, Ingeniero Informático por la Universidad de Costa Rica (2020) y fotógrafo apasionado. Gracias a mi formación previa en Turismo Ecológico (2015), disfruto capturando la vida silvestre, así como la arquitectura y los paisajes de distintos rincones del mundo. Mi cámara Fuji X-T30 III es la compañera perfecta para conectar y plasmar todas estas pasiones.",
     aboutByline: "Sebastián Mesén",
     aboutRole: "Fotógrafo",
-    footerRights: "© 2026 Sebastián Mesén · Fotografo entusiasta.",
+    aboutSocialLabel: "Redes sociales",
+    aboutLinkedIn: "Perfil de LinkedIn",
+    aboutInstagram: "Perfil de Instagram",
+    footerRights: "© 2026 · Fotografo entusiasta.",
     footerBuilt: "Desarrollado por Sebastián Mesén",
     categoryNames: {
       birds: "Aves",

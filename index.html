@@ -104,13 +104,34 @@
 
     <section class="about wrap" id="about" aria-labelledby="about-title">
       <div class="about__grid">
-        <h2 id="about-title" data-i18n="aboutTitle">About the collection</h2>
+        <figure class="about__photo">
+          <img src="assets/photos/sebas.jpg" alt="Portrait of Sebastián Mesén" width="4160" height="6240" loading="lazy">
+        </figure>
         <div class="about__body">
+          <h2 id="about-title" data-i18n="aboutTitle">About me</h2>
           <p data-i18n="aboutBody">I photograph the animals, plants and landscapes I meet, mostly in the forests and coasts of Costa Rica. Each plate is filed like a specimen sheet: what the subject is, where it lives, and how the frame was made.</p>
-          <p class="about__signature">
-            <span class="about__name" data-i18n="aboutByline">Sebastián Mesén</span>
-            <span class="about__role" data-i18n="aboutRole">Wildlife photographer</span>
-          </p>
+          <div class="about__meta">
+            <p class="about__signature">
+              <span class="about__name" data-i18n="aboutByline">Sebastián Mesén</span>
+              <span class="about__role" data-i18n="aboutRole">Wildlife photographer</span>
+            </p>
+            <nav class="about__social" aria-label="Social links" data-i18n-aria="aboutSocialLabel">
+              <a class="about__social-link" href="https://www.linkedin.com/in/sebasmesen/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" data-i18n-aria="aboutLinkedIn">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                  <rect x="2" y="9" width="4" height="12"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+              </a>
+              <a class="about__social-link" href="https://www.instagram.com/my_frames_of_earth/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-i18n-aria="aboutInstagram">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+              </a>
+            </nav>
+          </div>
         </div>
       </div>
     </section>

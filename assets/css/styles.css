@@ -866,14 +866,14 @@ a {
 
 .about__grid {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  gap: clamp(2rem, 6vw, 6rem);
-  align-items: start;
+  grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
 }
 
 .about h2 {
-  margin: 0;
-  max-width: 9ch;
+  margin: 0 0 1rem;
+  max-width: none;
   font-family: var(--font-display);
   font-weight: 400;
   font-size: clamp(2rem, 4.2vw, 3.4rem);
@@ -889,14 +889,21 @@ a {
   text-wrap: pretty;
 }
 
+.about__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 18px;
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+
 .about__signature {
   display: flex;
   flex-direction: column;
   gap: 3px;
-  margin-top: 28px;
-  padding-top: 16px;
-  max-width: 260px;
-  border-top: 1px solid var(--line);
+  margin: 0;
 }
 
 .about__name {
@@ -911,6 +918,48 @@ a {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--muted);
+}
+
+.about__photo {
+  margin: 0;
+}
+
+.about__photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center 15%;
+  border: 1px solid var(--line);
+  background: var(--paper-alt);
+}
+
+.about__social {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+}
+
+.about__social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  margin: -6px;
+  color: var(--muted);
+  transition: color 160ms ease;
+}
+
+.about__social-link:hover {
+  color: var(--ink);
+}
+
+.about__social-link:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
 /* ---------------- footer ---------------- */
@@ -1318,6 +1367,10 @@ dialog {
     grid-template-columns: 1fr;
     gap: 1.75rem;
   }
+  .about__photo {
+    max-width: 320px;
+    margin-inline: auto;
+  }
   .about h2 {
     max-width: none;
   }
@@ -1417,6 +1470,14 @@ dialog {
   }
   .plate__exif dd {
     font-size: 11px;
+  }
+  .about__photo {
+    max-width: 280px;
+  }
+  .about__meta {
+    gap: 10px 14px;
+    margin-top: 22px;
+    padding-top: 16px;
   }
 }
 
