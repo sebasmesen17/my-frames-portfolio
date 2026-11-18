@@ -271,7 +271,7 @@ window.PHOTOS = [
     credit: {
       author: "Sebastián Mesén Arias",
       license: "CC BY-NC 4.0",
-      url: "https://ebird.org/species/grghaw"
+      url: "https://ebird.org/species/gryhaw2"
     }
   },
   {
@@ -375,7 +375,7 @@ window.PHOTOS = [
     credit: {
       author: "Sebastián Mesén Arias",
       license: "CC BY-NC 4.0",
-      url: "https://ebird.org/species/scrmac1"
+      url: "https://ebird.org/species/scamac1"
     }
   },
   {
@@ -418,7 +418,7 @@ window.PHOTOS = [
     credit: {
       author: "Sebastián Mesén Arias",
       license: "CC BY-NC 4.0",
-      url: "https://ebird.org/species/turbmo1"
+      url: "https://ebird.org/species/tubmot1"
     }
   },
   {
@@ -552,7 +552,7 @@ window.PHOTOS = [
     credit: {
       author: "Sebastián Mesén Arias",
       license: "CC BY-NC 4.0",
-      url: "https://ebird.org/species/nortpe1"
+      url: "https://ebird.org/species/tropew4"
     }
   },
   {
@@ -888,7 +888,7 @@ window.PHOTOS = [
     credit: {
       author: "Sebastián Mesén Arias",
       license: "CC BY-NC 4.0",
-      url: "https://ebird.org/species/clcthr"
+      url: "https://ebird.org/species/clcrob"
     }
   },
   {
