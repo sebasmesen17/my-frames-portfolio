@@ -711,6 +711,8 @@
     els.chips.addEventListener("click", (event) => {
       const chip = event.target.closest("[data-category]");
       if (!chip) return;
+      state.q = "";
+      els.search.value = "";
       state.category = chip.dataset.category;
       $$(".chip", els.chips).forEach((button) => {
         const active = button.dataset.category === state.category;
