@@ -168,7 +168,7 @@ The page is a single editorial column with a 1440px maximum width. Page padding 
 
 The masthead is a three-column bar: mark and wordmark left, field line centered, navigation and language toggle right. The hero pairs a large display statement with a short guide paragraph and a right-aligned ledger of counts.
 
-The collection begins with a full-width sticky index bar containing search and shape chips, followed by a non-sticky metadata row for family, place, order, count, and clear filters. Plates use a two-column CSS-columns masonry above 760px and a single column below it. The featured plate is wider than the grid and uses the photograph's natural aspect ratio, capped at 76vh desktop and 58vh mobile.
+The collection begins with a full-width sticky index bar containing search and shape chips, followed by a non-sticky metadata row for family, place, order, count, and clear filters. Plates use a two-column masonry ordered left-to-right, top-to-bottom above 760px and a single sequential column below it. The featured plate is wider than the grid and uses the photograph's natural aspect ratio, capped at 76vh desktop and 58vh mobile.
 
 The About section is a two-column editorial spread (roughly 0.9 / 1.1) that collapses to one column at 900px. The viewer is a two-column dialog (1.45 / 0.75) that also collapses at 900px. Breakpoints are 1080px (hide the masthead field line), 900px (single-column hero foot, About, and viewer), 760px (single-column collection, compact navigation), and 520px (compact viewer bar and controls).
 

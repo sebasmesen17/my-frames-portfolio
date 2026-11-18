@@ -475,17 +475,6 @@ a {
   appearance: none;
 }
 
-.search__hint {
-  flex: none;
-  border: 1px solid var(--line);
-  padding: 3px 7px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.06em;
-  color: var(--muted);
-  background: var(--card);
-}
-
 .chips {
   display: flex;
   flex-wrap: wrap;
@@ -930,29 +919,26 @@ a {
   font-size: 12px;
 }
 
+/* Plates are distributed into two columns in row order (1 left, 2 right,
+   3 left, 4 right…) by app.js, so reading order runs left-to-right. */
 .grid {
-  columns: 2;
-  column-gap: var(--gap);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--gap);
+}
+
+.grid__column {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  gap: var(--gap);
+  min-width: 0;
 }
 
 .grid .plate {
-  display: inline-block;
-  width: 100%;
-  margin: 0 0 var(--gap);
-}
-
-/* With only two results, multi-column can stack both cards in the first
-   column. Use a real two-column grid so they sit side by side. */
-.grid[data-count="2"] {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: var(--gap);
-  align-items: start;
-}
-
-.grid[data-count="2"] .plate {
   display: block;
-  margin-bottom: 0;
+  width: 100%;
+  margin: 0;
 }
 
 /* ---------------- empty / about ---------------- */
@@ -1841,10 +1827,11 @@ dialog {
     max-width: 12ch;
   }
   .grid {
-    columns: 1;
+    flex-direction: column;
+    align-items: stretch;
   }
-  .grid[data-count="2"] {
-    grid-template-columns: 1fr;
+  .grid__column {
+    flex: none;
   }
   .plate--featured .plate__imgwrap,
   .plate--featured .plate__imgwrap img {
@@ -1908,9 +1895,6 @@ dialog {
 }
 
 @media (max-width: 520px) {
-  .search__hint {
-    display: none;
-  }
   .viewer__label {
     font-size: 11px;
   }

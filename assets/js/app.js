@@ -21,6 +21,15 @@
   const PHOTOS = normalizePhotos(window.PHOTOS);
   const I18N = window.I18N || { en: {}, es: {} };
   const CATEGORIES = ["all", "birds", "mammals", "herps", "insects", "plants", "landscapes", "architecture"];
+  const SORT_OPTIONS = [
+    { value: "curated", key: "sortCurated" },
+    { value: "newest", key: "sortNewest" },
+    { value: "oldest", key: "sortOldest" },
+    { value: "name", key: "sortName" },
+    { value: "nameDesc", key: "sortNameDesc" },
+    { value: "plate", key: "sortPlate" }
+  ];
+  const SORT_VALUES = SORT_OPTIONS.map((option) => option.value);
   const DEFAULTS = { q: "", category: "all", family: "all", place: "all", sort: "curated" };
 
   const state = { lang: "en", ...DEFAULTS };
@@ -75,6 +84,7 @@
 
   const carouselTimers = new Map();
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const wideGrid = window.matchMedia("(min-width: 761px)");
 
   /* ---------------- language ---------------- */
 
@@ -92,9 +102,9 @@
 
     state.q = params.get("q") || "";
     state.category = CATEGORIES.includes(params.get("cat")) ? params.get("cat") : "all";
-    state.family = params.get("family") || "all";
-    state.place = params.get("place") || "all";
-    state.sort = ["curated", "newest", "name"].includes(params.get("sort")) ? params.get("sort") : "curated";
+    state.family = FAMILY_KEYS.has(params.get("family")) ? params.get("family") : "all";
+    state.place = PLACE_KEYS.has(params.get("place")) ? params.get("place") : "all";
+    state.sort = SORT_VALUES.includes(params.get("sort")) ? params.get("sort") : "curated";
     els.search.value = state.q;
   }
 
@@ -213,13 +223,70 @@
 
   const indexCache = new Map(PHOTOS.map((photo) => [photo.id, searchIndex(photo)]));
 
+  /* Valid filter values, derived from the collection itself. */
+  const FAMILY_KEYS = new Set(
+    PHOTOS
+      .map((photo) => photo.family?.sci)
+      .filter((sci) => sci && sci !== "—")
+  );
+  const PLACE_KEYS = new Set(PHOTOS.map((photo) => photo.location?.en).filter(Boolean));
+
+  /* Dates are stored as YYYY-MM-DD, but some plates use "—" when unknown. */
+  function dateTimestamp(photo) {
+    const value = String(photo.date ?? "").trim();
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return null;
+    const time = Date.parse(`${value}T00:00:00Z`);
+    return Number.isNaN(time) ? null : time;
+  }
+
+  const comparePlateNumbers = (a, b) =>
+    (Number.parseInt(a.plate, 10) || 0) - (Number.parseInt(b.plate, 10) || 0);
+
+  const compareByDate = (direction) => (a, b) => {
+    const aTime = dateTimestamp(a);
+    const bTime = dateTimestamp(b);
+    if (aTime === null && bTime === null) return comparePlateNumbers(a, b);
+    if (aTime === null) return 1; // Undated plates always go last.
+    if (bTime === null) return -1;
+    if (aTime !== bTime) return direction * (aTime - bTime);
+    return comparePlateNumbers(a, b);
+  };
+
+  const compareByName = (direction) => {
+    const collator = new Intl.Collator(state.lang, { sensitivity: "base", numeric: true });
+    return (a, b) => {
+      const common = collator.compare(a.name?.[state.lang] || "", b.name?.[state.lang] || "");
+      if (common !== 0) return direction * common;
+      const scientific = collator.compare(a.sci || "", b.sci || "");
+      if (scientific !== 0) return direction * scientific;
+      return comparePlateNumbers(a, b);
+    };
+  };
+
+  function sortPhotos(photos) {
+    switch (state.sort) {
+      case "newest":
+        return photos.sort(compareByDate(-1));
+      case "oldest":
+        return photos.sort(compareByDate(1));
+      case "name":
+        return photos.sort(compareByName(1));
+      case "nameDesc":
+        return photos.sort(compareByName(-1));
+      case "plate":
+        return photos.sort(comparePlateNumbers);
+      default:
+        return photos;
+    }
+  }
+
   function filteredPhotos() {
     const tokens = normalize(state.q).split(/\s+/).filter(Boolean);
 
-    let photos = PHOTOS.filter((photo) => {
+    const photos = PHOTOS.filter((photo) => {
       if (state.category !== "all" && photo.category !== state.category) return false;
-      if (state.family !== "all" && photo.family.sci !== state.family) return false;
-      if (state.place !== "all" && photo.location.en !== state.place) return false;
+      if (state.family !== "all" && photo.family?.sci !== state.family) return false;
+      if (state.place !== "all" && photo.location?.en !== state.place) return false;
       if (!tokens.length) return true;
       const haystack = indexCache.get(photo.id);
       return tokens.every((token) =>
@@ -227,14 +294,7 @@
       );
     });
 
-    if (state.sort === "newest") {
-      photos = photos.sort((a, b) => b.date.localeCompare(a.date));
-    } else if (state.sort === "name") {
-      const collator = new Intl.Collator(state.lang, { sensitivity: "base" });
-      photos = photos.sort((a, b) => collator.compare(a.name[state.lang], b.name[state.lang]));
-    }
-
-    return photos;
+    return sortPhotos(photos);
   }
 
   function hasActiveFilters() {
@@ -456,9 +516,13 @@
     els.featured.hidden = !featured;
     els.featured.innerHTML = featured ? plateMarkup(featured, 0, true) : "";
 
-    els.grid.dataset.count = String(gridPhotos.length);
-    els.grid.innerHTML = gridPhotos
-      .map((photo, index) => plateMarkup(photo, index + (featured ? 1 : 0)))
+    const columnCount = wideGrid.matches ? 2 : 1;
+    const columns = Array.from({ length: columnCount }, () => []);
+    gridPhotos.forEach((photo, index) => {
+      columns[index % columnCount].push(plateMarkup(photo, index + (featured ? 1 : 0)));
+    });
+    els.grid.innerHTML = columns
+      .map((plates) => `<div class="grid__column">${plates.join("")}</div>`)
       .join("");
 
     els.empty.hidden = count !== 0;
@@ -478,7 +542,7 @@
   function buildSelects() {
     const families = new Map();
     PHOTOS.forEach((photo) => {
-      if (!photo.family.sci || photo.family.sci === "—") return;
+      if (!photo.family?.sci || photo.family.sci === "—") return;
       families.set(photo.family.sci, photo.family[state.lang]);
     });
     const familyOptions = [...families.entries()]
@@ -490,7 +554,8 @@
 
     const places = new Map();
     PHOTOS.forEach((photo) => {
-      places.set(photo.location.en, photo.location[state.lang]);
+      if (!photo.location?.en) return;
+      places.set(photo.location.en, photo.location[state.lang] || photo.location.en);
     });
     const placeOptions = [...places.entries()]
       .sort((a, b) => a[1].localeCompare(b[1], state.lang))
@@ -502,10 +567,11 @@
     els.family.innerHTML = `<option value="all">${esc(t("allFamilies"))}</option>${familyOptions}`;
     els.place.innerHTML = `<option value="all">${esc(t("allPlaces"))}</option>${placeOptions}`;
 
-    els.sort.innerHTML = `
-      <option value="curated"${state.sort === "curated" ? " selected" : ""}>${esc(t("sortCurated"))}</option>
-      <option value="newest"${state.sort === "newest" ? " selected" : ""}>${esc(t("sortNewest"))}</option>
-      <option value="name"${state.sort === "name" ? " selected" : ""}>${esc(t("sortName"))}</option>`;
+    els.sort.innerHTML = SORT_OPTIONS
+      .map(({ value, key }) =>
+        `<option value="${value}"${state.sort === value ? " selected" : ""}>${esc(t(key))}</option>`
+      )
+      .join("");
   }
 
   function syncUrl() {
@@ -838,6 +904,8 @@
     window.matchMedia("(min-width: 901px)").addEventListener("change", (event) => {
       if (event.matches && navOpen) setNavOpen(false);
     });
+
+    wideGrid.addEventListener("change", () => render());
 
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape" && navOpen) setNavOpen(false);
