@@ -60,6 +60,7 @@
     viewerClose: $("#viewerClose"),
     credits: $("#credits"),
     creditsList: $("#creditsList"),
+    equipment: $("#equipment"),
     langButtons: $$("[data-lang]"),
     ledgerTop: $("#ledgerTop"),
     ledgerBottom: $("#ledgerBottom")
@@ -816,6 +817,25 @@
     els.credits.addEventListener("cancel", (event) => {
       event.preventDefault();
       els.credits.close();
+    });
+
+    $$("[data-open-equipment]").forEach((trigger) => {
+      trigger.addEventListener("click", () => {
+        if (!els.equipment.open) {
+          els.equipment.showModal();
+          document.documentElement.classList.add("is-locked");
+        }
+      });
+    });
+
+    const equipmentClose = $("#equipmentClose");
+    equipmentClose?.addEventListener("click", () => els.equipment.close());
+    els.equipment.addEventListener("close", () => {
+      document.documentElement.classList.remove("is-locked");
+    });
+    els.equipment.addEventListener("cancel", (event) => {
+      event.preventDefault();
+      els.equipment.close();
     });
   }
 

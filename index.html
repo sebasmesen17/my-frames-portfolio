@@ -31,6 +31,7 @@
         <a href="#collection" data-i18n="navCollection">Collection</a>
         <a href="#about" data-i18n="navAbout">About</a>
         <button class="link-button" type="button" data-open-credits data-i18n="navCredits">Photo credits</button>
+        <button class="link-button" type="button" data-open-equipment data-i18n="navEquipment">My equipment</button>
         <div class="lang" role="group" aria-label="Language" data-i18n-aria="langLabel">
           <button type="button" data-lang="en" aria-pressed="true">EN</button>
           <button type="button" data-lang="es" aria-pressed="false">ES</button>
@@ -141,6 +142,7 @@
     <div class="wrap footer__inner">
       <p data-i18n="footerRights">© 2026 Sebastián Mesén · Demo photograph.</p>
       <button class="link-button" type="button" data-open-credits data-i18n="navCredits">Photo credits</button>
+      <button class="link-button" type="button" data-open-equipment data-i18n="navEquipment">My equipment</button>
       <p class="footer__built" data-i18n="footerBuilt">Static site · GitHub Pages</p>
     </div>
   </footer>
@@ -209,6 +211,106 @@
       </header>
       <p class="credits__intro" data-i18n="creditsIntro">The photograph on this site is demo content from Wikimedia Commons, shown under the licence listed below.</p>
       <ul class="credits__list" id="creditsList"></ul>
+    </div>
+  </dialog>
+
+  <dialog class="equipment" id="equipment" aria-labelledby="equipment-title">
+    <div class="equipment__shell">
+      <header class="equipment__bar">
+        <div class="equipment__heading">
+          <p class="equipment__eyebrow" data-i18n="equipmentEyebrow">Field kit</p>
+          <h2 id="equipment-title" data-i18n="equipmentTitle">My equipment</h2>
+        </div>
+        <button class="close-button" type="button" id="equipmentClose">
+          <span data-i18n="equipmentClose">Close equipment</span>
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <path d="m5 5 14 14M19 5 5 19"></path>
+          </svg>
+        </button>
+      </header>
+
+      <div class="equipment__intro-row">
+        <p class="equipment__intro" data-i18n="equipmentIntro">The kit I carry into the field: one body, three lenses and a monopod, kept light enough to move with the subject and simple enough to stay out of the way.</p>
+        <p class="equipment__count" data-i18n="equipmentCount">5 pieces</p>
+      </div>
+
+      <ul class="equipment__list">
+        <li class="equipment__item equipment__item--lead">
+          <span class="equipment__index" aria-hidden="true">01</span>
+          <span class="equipment__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="5" y="15" width="38" height="24" rx="3"></rect>
+              <path d="M15 15l2.5-5h13L33 15"></path>
+              <circle cx="24" cy="27" r="7.5"></circle>
+              <circle cx="24" cy="27" r="3"></circle>
+              <path d="M9 20h5M35.5 20h2.5M9 35h4"></path>
+            </svg>
+          </span>
+          <span class="equipment__copy">
+            <span class="equipment__kind" data-i18n="equipmentCamera">Camera body</span>
+            <span class="equipment__name">Fujifilm X-T30 III</span>
+            <span class="equipment__note" data-i18n="equipmentCameraNote">Primary body</span>
+          </span>
+        </li>
+
+        <li class="equipment__item">
+          <span class="equipment__index" aria-hidden="true">02</span>
+          <span class="equipment__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="11" y="16" width="28" height="16" rx="3"></rect>
+              <path d="M11 21H7v6h4M18 16v16M26 16v16M33 16v16M39 20h2v8h-2"></path>
+            </svg>
+          </span>
+          <span class="equipment__copy">
+            <span class="equipment__kind" data-i18n="equipmentStandardZoom">Standard zoom</span>
+            <span class="equipment__name">Tamron 17-70mm</span>
+            <span class="equipment__note" data-i18n="equipmentStandardZoomNote">Everyday range</span>
+          </span>
+        </li>
+
+        <li class="equipment__item">
+          <span class="equipment__index" aria-hidden="true">03</span>
+          <span class="equipment__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="6" y="19" width="35" height="10" rx="3"></rect>
+              <path d="M6 22H3v4h3M14 19v10M23 19v10M34 19v10M41 22v4M22 29v5h5v-5"></path>
+            </svg>
+          </span>
+          <span class="equipment__copy">
+            <span class="equipment__kind" data-i18n="equipmentTeleZoom">Telephoto zoom</span>
+            <span class="equipment__name">Tamron 150-500mm</span>
+            <span class="equipment__note" data-i18n="equipmentTeleZoomNote">Wildlife reach</span>
+          </span>
+        </li>
+
+        <li class="equipment__item">
+          <span class="equipment__index" aria-hidden="true">04</span>
+          <span class="equipment__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10 19h10v10H10zM20 16h8l9 4v8l-9 4h-8zM20 16v16M26 16v16M7 21h3v6H7z"></path>
+            </svg>
+          </span>
+          <span class="equipment__copy">
+            <span class="equipment__kind" data-i18n="equipmentWideZoom">Wide zoom</span>
+            <span class="equipment__name">Fujinon 13-33mm</span>
+            <span class="equipment__note" data-i18n="equipmentWideZoomNote">Wide views</span>
+          </span>
+        </li>
+
+        <li class="equipment__item">
+          <span class="equipment__index" aria-hidden="true">05</span>
+          <span class="equipment__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 5h12v6H18zM24 11v28M19 17h10v5H19zM17 39l7 4 7-4M22 6h4"></path>
+            </svg>
+          </span>
+          <span class="equipment__copy">
+            <span class="equipment__kind" data-i18n="equipmentSupport">Support</span>
+            <span class="equipment__name">SIRUI P-424FS + VH-10</span>
+            <span class="equipment__note" data-i18n="equipmentSupportNote">Monopod &amp; head</span>
+          </span>
+        </li>
+      </ul>
     </div>
   </dialog>
 </body>

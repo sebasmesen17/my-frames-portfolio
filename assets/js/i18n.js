@@ -10,6 +10,7 @@ window.I18N = {
     navCollection: "Collection",
     navAbout: "About",
     navCredits: "Photo credits",
+    navEquipment: "My equipment",
     langLabel: "Language",
     heroTitle: "The living world,<br><span class=\"hero__quiet\">filed by hand.</span>",
     heroIntro:
@@ -61,6 +62,22 @@ window.I18N = {
     creditsIntro:
       "The photograph on this site were taken from Sebastián Mesén Arias's personal collection and are shown under the license indicated below.",
     creditsClose: "Close credits",
+    equipmentTitle: "My equipment",
+    equipmentEyebrow: "Field kit",
+    equipmentIntro:
+      "The kit I carry into the field: one body, three lenses and a monopod, kept light enough to move with the subject and simple enough to stay out of the way.",
+    equipmentCount: "5 pieces",
+    equipmentClose: "Close equipment",
+    equipmentCamera: "Camera body",
+    equipmentCameraNote: "Primary body",
+    equipmentStandardZoom: "Standard zoom",
+    equipmentStandardZoomNote: "Everyday range",
+    equipmentTeleZoom: "Telephoto zoom",
+    equipmentTeleZoomNote: "Wildlife reach",
+    equipmentWideZoom: "Wide zoom",
+    equipmentWideZoomNote: "Wide views",
+    equipmentSupport: "Support",
+    equipmentSupportNote: "Monopod & head",
     aboutTitle: "About me",
     aboutBody:
       "I am Sebastián Mesén Arias, a Computer Engineer by trade (UCR - 2020) and a passionate photographer. Leveraging my background in Ecological Tourism (2015), I specialize in wildlife, landscape, and architectural photography from around the world. My Fujifilm X-T30 III is the perfect companion to complement and bring all these passions together.",
@@ -100,6 +117,7 @@ window.I18N = {
     navCollection: "Colección",
     navAbout: "Acerca de",
     navCredits: "Créditos",
+    navEquipment: "Mi equipo",
     langLabel: "Idioma",
     heroTitle: "El mundo vivo,<br><span class=\"hero__quiet\">archivado a mano.</span>",
     heroIntro:
@@ -151,6 +169,22 @@ window.I18N = {
     creditsIntro:
       "Las fotografías de este sitio provienen de la colección personal de Sebastián Mesén Arias y se muestran bajo la licencia que se indica a continuación.r.",
     creditsClose: "Cerrar créditos",
+    equipmentTitle: "Mi equipo",
+    equipmentEyebrow: "Equipo de campo",
+    equipmentIntro:
+      "El equipo que llevo al campo: un cuerpo, tres lentes y un monopié, lo bastante ligero para seguir al sujeto y lo bastante simple para no estorbar.",
+    equipmentCount: "5 piezas",
+    equipmentClose: "Cerrar equipo",
+    equipmentCamera: "Cuerpo de cámara",
+    equipmentCameraNote: "Cuerpo principal",
+    equipmentStandardZoom: "Zoom estándar",
+    equipmentStandardZoomNote: "Uso diario",
+    equipmentTeleZoom: "Teleobjetivo",
+    equipmentTeleZoomNote: "Alcance para fauna",
+    equipmentWideZoom: "Zoom angular",
+    equipmentWideZoomNote: "Vistas amplias",
+    equipmentSupport: "Soporte",
+    equipmentSupportNote: "Monopié y cabezal",
     aboutTitle: "Sobre mí",
     aboutBody:
       "Soy Sebastián Mesén Arias, Ingeniero Informático por la Universidad de Costa Rica (2020) y fotógrafo apasionado. Gracias a mi formación previa en Turismo Ecológico (2015), disfruto capturando la vida silvestre, así como la arquitectura y los paisajes de distintos rincones del mundo. Mi cámara Fuji X-T30 III es la compañera perfecta para conectar y plasmar todas estas pasiones.",
