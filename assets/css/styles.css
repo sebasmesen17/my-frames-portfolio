@@ -862,6 +862,20 @@ a {
   margin: 0 0 var(--gap);
 }
 
+/* With only two results, multi-column can stack both cards in the first
+   column. Use a real two-column grid so they sit side by side. */
+.grid[data-count="2"] {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: var(--gap);
+  align-items: start;
+}
+
+.grid[data-count="2"] .plate {
+  display: block;
+  margin-bottom: 0;
+}
+
 /* ---------------- empty / about ---------------- */
 
 .empty {
@@ -1511,6 +1525,9 @@ dialog {
   }
   .grid {
     columns: 1;
+  }
+  .grid[data-count="2"] {
+    grid-template-columns: 1fr;
   }
   .plate--featured .plate__imgwrap,
   .plate--featured .plate__imgwrap img {

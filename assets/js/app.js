@@ -451,6 +451,7 @@
     els.featured.hidden = !featured;
     els.featured.innerHTML = featured ? plateMarkup(featured, 0, true) : "";
 
+    els.grid.dataset.count = String(gridPhotos.length);
     els.grid.innerHTML = gridPhotos
       .map((photo, index) => plateMarkup(photo, index + (featured ? 1 : 0)))
       .join("");
