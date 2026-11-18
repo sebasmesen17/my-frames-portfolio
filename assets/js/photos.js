@@ -432,7 +432,7 @@ window.PHOTOS = [
     name: { en: "Northern Ghost Bat", es: "Murciélago Fantasma" },
     sci: "Diclidurus albus",
     family: { sci: "Emballonuridae", en: "Sac-winged bats", es: "Murciélagos de saco" },
-    location: { en: "Orotina, Alajuela, Costa Rica", es: "Orotina, Alajuela, Costa Rica" },
+    location: { en: "Carara National Park, Costa Rica", es: "Parque nacional Carara, Costa Rica" },
     date: "2026-11-14",
     gear: { camera: "FujiFilm X-T30-III", lens: "Tamron 150mm-500mm (APS-C x1.5 225mm-750mm) ƒ/5-6.7" },
     exif: { shutter: "1/30 s", aperture: "ƒ/6.7", iso: "1000", focal: "750 mm" },
@@ -444,7 +444,7 @@ window.PHOTOS = [
       en: "A Northern Ghost Bat roosting on a palm frond; its white fur is unusual among bats.",
       es: "Un Murciélago Fantasma descansando sobre una hoja de palma; su pelaje blanco es poco común entre los murciélagos."
     },
-    tags: ["bat", "murciélago", "mammal", "mamífero", "Tropical moist forest", "Bosque húmedo tropical", "Orotina"],
+    tags: ["bat", "murciélago", "mammal", "mamífero", "Tropical moist forest", "Bosque húmedo tropical", "Carara"],
     credit: {
       author: "Sebastián Mesén Arias",
       license: "CC BY-NC 4.0",
