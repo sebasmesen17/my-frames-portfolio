@@ -62,6 +62,9 @@
     creditsList: $("#creditsList"),
     equipment: $("#equipment"),
     langButtons: $$("[data-lang]"),
+    masthead: $(".masthead"),
+    navToggle: $(".nav-toggle"),
+    nav: $("#site-nav"),
     ledgerTop: $("#ledgerTop"),
     ledgerBottom: $("#ledgerBottom")
   };
@@ -154,6 +157,7 @@
       /* storage unavailable */
     }
     applyStaticText();
+    if (navOpen) setNavOpen(true);
     buildChips();
     buildSelects();
     render();
@@ -675,6 +679,18 @@
     }
   }
 
+  /* ---------------- mobile menu ---------------- */
+
+  let navOpen = false;
+
+  function setNavOpen(open) {
+    navOpen = open;
+    els.masthead.classList.toggle("is-open", open);
+    if (!els.navToggle) return;
+    els.navToggle.setAttribute("aria-expanded", String(open));
+    els.navToggle.setAttribute("aria-label", t(open ? "menuClose" : "menuLabel"));
+  }
+
   /* ---------------- events ---------------- */
 
   function bind() {
@@ -804,6 +820,25 @@
 
     els.langButtons.forEach((button) => {
       button.addEventListener("click", () => setLanguage(button.dataset.lang));
+    });
+
+    els.navToggle?.addEventListener("click", () => setNavOpen(!navOpen));
+
+    els.nav?.addEventListener("click", (event) => {
+      if (event.target.closest("a, button")) setNavOpen(false);
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!navOpen || event.target.closest(".masthead")) return;
+      setNavOpen(false);
+    });
+
+    window.matchMedia("(min-width: 901px)").addEventListener("change", (event) => {
+      if (event.matches && navOpen) setNavOpen(false);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && navOpen) setNavOpen(false);
     });
 
     const creditsTriggers = $$("[data-open-credits]");

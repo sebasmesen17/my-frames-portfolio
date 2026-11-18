@@ -601,7 +601,7 @@ window.PHOTOS = [
     name: { en: "Geoffroy's Spider Monkey", es: "Mono Araña de Geoffroy" },
     sci: "Ateles geoffroyi",
     family: { sci: "Atelidae", en: "Spider monkeys", es: "Monos araña" },
-    location: { en: "Orotina, Alajuela, Costa Rica", es: "Orotina, Alajuela, Costa Rica" },
+    location: { en: "Carara National Park, Costa Rica", es: "Parque nacional Carara, Costa Rica" },
     date: "2026-11-14",
     gear: { camera: "FujiFilm X-T30-III", lens: "Tamron 150mm-500mm (APS-C x1.5 225mm-750mm) ƒ/5-6.7" },
     exif: { shutter: "1/1250 s", aperture: "ƒ/6.7", iso: "2000", focal: "750 mm" },
@@ -609,7 +609,7 @@ window.PHOTOS = [
       en: "A female Geoffroy's Spider Monkey carries her young through the canopy, pausing to feed among the leaves.",
       es: "Una hembra de Mono Araña de Geoffroy lleva a su cría por el dosel, deteniéndose a alimentarse entre las hojas."
     },
-    tags: ["mammal", "mamífero", "monkey", "mono", "spider monkey", "Tropical moist forest", "Bosque húmedo tropical", "Orotina"],
+    tags: ["mammal", "mamífero", "monkey", "mono", "spider monkey", "Tropical moist forest", "Bosque húmedo tropical", "Carara"],
     credit: {
       author: "Sebastián Mesén Arias",
       license: "CC BY-NC 4.0",

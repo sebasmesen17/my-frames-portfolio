@@ -11,6 +11,8 @@ window.I18N = {
     navAbout: "About",
     navCredits: "Photo credits",
     navEquipment: "My equipment",
+    menuLabel: "Open menu",
+    menuClose: "Close menu",
     langLabel: "Language",
     heroTitle: "The living world,<br><span class=\"hero__quiet\">filed by hand.</span>",
     heroIntro:
@@ -118,6 +120,8 @@ window.I18N = {
     navAbout: "Acerca de",
     navCredits: "Créditos",
     navEquipment: "Mi equipo",
+    menuLabel: "Abrir menú",
+    menuClose: "Cerrar menú",
     langLabel: "Idioma",
     heroTitle: "El mundo vivo,<br><span class=\"hero__quiet\">archivado a mano.</span>",
     heroIntro:

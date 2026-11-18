@@ -24,10 +24,17 @@
   <header class="masthead">
     <div class="wrap masthead__inner">
       <a class="brand" href="./">
+        <img class="brand__logo" src="assets/toucan-logo-square.png" width="44" height="44" alt="">
         <span class="brand__name" data-i18n="brand">My Frames of Earth</span>
       </a>
       <p class="brand__sub" data-i18n="brandSub">Wildlife photography · Costa Rica</p>
-      <nav class="masthead__nav" aria-label="Primary">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"
+              aria-label="Open menu" data-i18n-aria="menuLabel">
+        <span class="nav-toggle__bars" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </span>
+      </button>
+      <nav class="masthead__nav" id="site-nav" aria-label="Primary">
         <a href="#collection" data-i18n="navCollection">Collection</a>
         <a href="#about" data-i18n="navAbout">About</a>
         <button class="link-button" type="button" data-open-credits data-i18n="navCredits">Photo credits</button>
