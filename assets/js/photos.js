@@ -1087,5 +1087,48 @@ window.PHOTOS = [
       license: "CC BY-NC 4.0",
       url: "https://ebird.org/species/crpowl"
     }
+  },
+  {
+    id: "Volatinia-jacarina",
+    plate: "027",
+    featured: false,
+    images: [
+      {
+        src: "assets/photos/blue-jack grassquit - Volatinia jacarina/DSCF8989.webp",
+        width: 1200,
+        height: 1800,
+        alt: {
+          en: "A male Blue-Black Grassquit perched on a rusted rebar stake among tall grasses, its glossy blue-black plumage catching the light against a soft green background.",
+          es: "Un Semillero Chirrí macho posado en una varilla de construcción oxidada entre hierbas altas, su plumaje negro azulado brillante captando la luz contra un fondo verde suave."
+        }
+      },
+      {
+        src: "assets/photos/blue-jack grassquit - Volatinia jacarina/DSCF8994.webp",
+        width: 1200,
+        height: 1800,
+        alt: {
+          en: "A male Blue-Black Grassquit balanced on the tip of a rusted rebar stake, looking to the right, with a blurred green meadow behind it.",
+          es: "Un Semillero Chirrí macho equilibrado en la punta de una varilla de construcción oxidada, mirando hacia la derecha, con una pradera verde desenfocada detrás."
+        }
+      }
+    ],
+    category: "birds",
+    name: { en: "Blue-Black Grassquit", es: "Semillero Chirrí" },
+    sci: "Volatinia jacarina",
+    family: { sci: "Thraupidae", en: "Tanagers", es: "Tangaras" },
+    location: { en: "Orotina, Alajuela, Costa Rica", es: "Orotina, Alajuela, Costa Rica" },
+    date: "2026-11-18",
+    gear: { camera: "FujiFilm X-T30-III", lens: "Tamron 150mm-500mm (APS-C x1.5 225mm-750mm) ƒ/5-6.7" },
+    exif: { shutter: "1/8 s", aperture: "ƒ/6.7", iso: "400", focal: "750 mm" },
+    note: {
+      en: "A male Blue-Black Grassquit singing from a low perch in the grass, its dark plumage glossed with deep blue in the soft light.",
+      es: "Un Semillero Chirrí macho cantando desde una percha baja entre la hierba, su plumaje oscuro con reflejos de azul profundo bajo la luz suave."
+    },
+    tags: ["bird", "ave", "Blue-Black Grassquit", "Semillero Chirrí", "Volatinia jacarina", "grassland", "pastizal", "Orotina"],
+    credit: {
+      author: "Sebastián Mesén Arias",
+      license: "CC BY-NC 4.0",
+      url: "https://ebird.org/species/blbgra1"
+    }
   }
 ];
