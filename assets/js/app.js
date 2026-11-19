@@ -71,6 +71,8 @@
     creditsList: $("#creditsList"),
     equipment: $("#equipment"),
     langButtons: $$("[data-lang]"),
+    themeButtons: $$("[data-theme-toggle]"),
+    themeColor: $("#themeColor"),
     masthead: $(".masthead"),
     navToggle: $(".nav-toggle"),
     nav: $("#site-nav"),
@@ -87,6 +89,29 @@
   const wideGrid = window.matchMedia("(min-width: 761px)");
 
   /* ---------------- language ---------------- */
+
+  const THEME_KEY = "mfh-theme";
+  const THEME_COLORS = { dark: "#0c0b09", light: "#fcfcfa" };
+  let theme = document.documentElement.dataset.theme === "light" ? "light" : "dark";
+
+  function applyTheme(next) {
+    theme = next === "light" ? "light" : "dark";
+    document.documentElement.dataset.theme = theme;
+    if (els.themeColor) els.themeColor.setAttribute("content", THEME_COLORS[theme]);
+    els.themeButtons.forEach((button) => {
+      button.setAttribute("aria-label", t(theme === "dark" ? "themeToLight" : "themeToDark"));
+      button.setAttribute("title", t(theme === "dark" ? "themeToLight" : "themeToDark"));
+    });
+  }
+
+  function setTheme(next) {
+    applyTheme(next);
+    try {
+      localStorage.setItem(THEME_KEY, theme);
+    } catch (_) {
+      /* storage unavailable */
+    }
+  }
 
   function readInitialState() {
     const params = new URLSearchParams(window.location.search);
@@ -130,6 +155,8 @@
     els.langButtons.forEach((button) => {
       button.setAttribute("aria-pressed", String(button.dataset.lang === state.lang));
     });
+
+    applyTheme(theme);
 
     renderLedger();
   }
@@ -899,9 +926,14 @@
       button.addEventListener("click", () => setLanguage(button.dataset.lang));
     });
 
+    els.themeButtons.forEach((button) => {
+      button.addEventListener("click", () => setTheme(theme === "dark" ? "light" : "dark"));
+    });
+
     els.navToggle?.addEventListener("click", () => setNavOpen(!navOpen));
 
     els.nav?.addEventListener("click", (event) => {
+      if (event.target.closest(".nav-tools")) return;
       if (event.target.closest("a, button")) setNavOpen(false);
     });
 

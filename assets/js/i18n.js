@@ -14,6 +14,8 @@ window.I18N = {
     menuLabel: "Open menu",
     menuClose: "Close menu",
     langLabel: "Language",
+    themeToLight: "Switch to light mode",
+    themeToDark: "Switch to dark mode",
     heroTitle: "The living world,<br><span class=\"hero__quiet\">filed by hand.</span>",
     heroIntro:
       "A personal field guide to the wildlife of Costa Rica. Every plate carries the natural-history record of its subject and the camera settings that brought it home.",
@@ -125,6 +127,8 @@ window.I18N = {
     menuLabel: "Abrir menú",
     menuClose: "Cerrar menú",
     langLabel: "Idioma",
+    themeToLight: "Cambiar a modo claro",
+    themeToDark: "Cambiar a modo oscuro",
     heroTitle: "El mundo vivo,<br><span class=\"hero__quiet\">archivado a mano.</span>",
     heroIntro:
       "Una guía de campo personal de la vida silvestre de Costa Rica. Cada lámina reúne la ficha de historia natural de su sujeto y los ajustes de cámara con que fue capturado.",

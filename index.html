@@ -5,7 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>My Frames of Earth — Wildlife Photography</title>
   <meta name="description" content="A personal field guide to the wildlife of Costa Rica: photographs with their natural-history records and camera settings.">
-  <meta name="theme-color" content="#fcfcfa">
+  <meta name="theme-color" content="#0c0b09" id="themeColor">
+  <script>
+    (function () {
+      var theme = "dark";
+      try {
+        if (localStorage.getItem("mfh-theme") === "light") theme = "light";
+      } catch (_) { /* storage unavailable */ }
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
   <meta property="og:title" content="My Frames of Earth — Wildlife Photography">
   <meta property="og:description" content="A personal field guide to the wildlife of Costa Rica, with the camera settings behind every plate.">
   <meta property="og:type" content="website">
@@ -39,9 +48,21 @@
         <a href="#about" data-i18n="navAbout">About</a>
         <button class="link-button" type="button" data-open-credits data-i18n="navCredits">Photo credits</button>
         <button class="link-button" type="button" data-open-equipment data-i18n="navEquipment">My equipment</button>
-        <div class="lang" role="group" aria-label="Language" data-i18n-aria="langLabel">
-          <button type="button" data-lang="en" aria-pressed="true">EN</button>
-          <button type="button" data-lang="es" aria-pressed="false">ES</button>
+        <div class="nav-tools">
+          <div class="lang" role="group" aria-label="Language" data-i18n-aria="langLabel">
+            <button type="button" data-lang="en" aria-pressed="true">EN</button>
+            <button type="button" data-lang="es" aria-pressed="false">ES</button>
+          </div>
+          <button class="theme-toggle" type="button" data-theme-toggle
+                  aria-label="Switch to light mode" data-i18n-aria="themeToLight">
+            <svg class="theme-toggle__moon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path>
+            </svg>
+            <svg class="theme-toggle__sun" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="4.2"></circle>
+              <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"></path>
+            </svg>
+          </button>
         </div>
       </nav>
     </div>
