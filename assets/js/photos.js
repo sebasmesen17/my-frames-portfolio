@@ -1035,5 +1035,57 @@ window.PHOTOS = [
       license: "CC BY-NC 4.0",
       url: "https://en.wikipedia.org/wiki/New_York_City"
     }
+  },
+  {
+    id: "Mochuelo",
+    plate: "026",
+    featured: false,
+    images: [
+      {
+        src: "assets/photos/Mochuelo - Glaucidium costaricanum/DSCF8975.webp",
+        width: 1200,
+        height: 1800,
+        alt: {
+          en: "A Costa Rican Pygmy-Owl perched on a mossy branch, its head turned and its yellow eyes fixed upward.",
+          es: "Un Mochuelo Costarricense posado en una rama con musgo, con la cabeza girada y sus ojos amarillos fijos hacia arriba."
+        }
+      },
+      {
+        src: "assets/photos/Mochuelo - Glaucidium costaricanum/DSCF8967.webp",
+        width: 1200,
+        height: 1800,
+        alt: {
+          en: "A Costa Rican Pygmy-Owl facing the camera from a mossy branch, its spotted brown plumage lit softly.",
+          es: "Un Mochuelo Costarricense mirando hacia la cámara desde una rama con musgo, su plumaje marrón moteado iluminado suavemente."
+        }
+      },
+      {
+        src: "assets/photos/Mochuelo - Glaucidium costaricanum/DSCF8965.webp",
+        width: 1200,
+        height: 1800,
+        alt: {
+          en: "A Costa Rican Pygmy-Owl perched upright on a branch, looking directly at the camera with bright yellow eyes.",
+          es: "Un Mochuelo Costarricense posado erguido en una rama, mirando directamente a la cámara con brillantes ojos amarillos."
+        }
+      }
+    ],
+    category: "birds",
+    name: { en: "Costa Rican Pygmy-Owl", es: "Mochuelo Costarricense" },
+    sci: "Glaucidium costaricanum",
+    family: { sci: "Strigidae", en: "Owls", es: "Búhos y lechuzas" },
+    location: { en: "Costa Rica", es: "Costa Rica" },
+    date: "2026-11-18",
+    gear: { camera: "FujiFilm X-T30-III", lens: "Tamron 150mm-500mm (APS-C x1.5 225mm-750mm) ƒ/5-6.7" },
+    exif: { shutter: "1/8 s", aperture: "ƒ/6.7", iso: "80", focal: "750 mm" },
+    note: {
+      en: "A Costa Rican Pygmy-Owl hunting from a low perch in the montane forest, its small size betrayed only by its bright yellow eyes.",
+      es: "Un Mochuelo Costarricense cazando desde una percha baja en el bosque montano; su pequeño tamaño apenas se delata por sus brillantes ojos amarillos."
+    },
+    tags: ["bird", "ave", "owl", "búho", "mochuelo", "Costa Rican Pygmy-Owl", "Mochuelo Costarricense", "montane forest", "bosque montano", "Costa Rica"],
+    credit: {
+      author: "Sebastián Mesén Arias",
+      license: "CC BY-NC 4.0",
+      url: "https://ebird.org/species/crpowl"
+    }
   }
 ];

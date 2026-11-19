@@ -540,11 +540,26 @@
   }
 
   function buildSelects() {
+    const categoryPhotos = state.category === "all"
+      ? PHOTOS
+      : PHOTOS.filter((photo) => photo.category === state.category);
+
     const families = new Map();
-    PHOTOS.forEach((photo) => {
+    categoryPhotos.forEach((photo) => {
       if (!photo.family?.sci || photo.family.sci === "—") return;
       families.set(photo.family.sci, photo.family[state.lang]);
     });
+
+    const places = new Map();
+    categoryPhotos.forEach((photo) => {
+      if (!photo.location?.en) return;
+      places.set(photo.location.en, photo.location[state.lang] || photo.location.en);
+    });
+
+    /* Drop selections that do not exist in the active category. */
+    if (state.family !== "all" && !families.has(state.family)) state.family = "all";
+    if (state.place !== "all" && !places.has(state.place)) state.place = "all";
+
     const familyOptions = [...families.entries()]
       .sort((a, b) => a[1].localeCompare(b[1], state.lang))
       .map(([sci, common]) =>
@@ -552,11 +567,6 @@
       )
       .join("");
 
-    const places = new Map();
-    PHOTOS.forEach((photo) => {
-      if (!photo.location?.en) return;
-      places.set(photo.location.en, photo.location[state.lang] || photo.location.en);
-    });
     const placeOptions = [...places.entries()]
       .sort((a, b) => a[1].localeCompare(b[1], state.lang))
       .map(([key, label]) =>
@@ -785,6 +795,7 @@
         button.classList.toggle("is-active", active);
         button.setAttribute("aria-pressed", String(active));
       });
+      buildSelects();
       render();
     });
 
@@ -806,10 +817,8 @@
     els.clear.addEventListener("click", () => {
       Object.assign(state, DEFAULTS);
       els.search.value = "";
-      els.family.value = "all";
-      els.place.value = "all";
-      els.sort.value = "curated";
       buildChips();
+      buildSelects();
       render();
       els.search.focus();
     });
